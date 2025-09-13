@@ -28,8 +28,8 @@ cp env.example .env
 
 ```yaml
 volumes:
-	- /var/run/docker.sock:/var/run/docker.sock
-	- /absolute/path/to/your/docker-compose.yml:/app/target-compose.yml:ro
+  - /var/run/docker.sock:/var/run/docker.sock
+  - /absolute/path/to/your/docker-compose.yml:/app/target-compose.yml:ro
 ```
 
 
