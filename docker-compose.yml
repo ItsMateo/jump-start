@@ -1,0 +1,20 @@
+services:
+  jump-start:
+    build: .
+    container_name: jump-start
+    restart: unless-stopped
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - DISCORD_GUILD_ID=${DISCORD_GUILD_ID}
+      - REQUIRED_ROLE_ID=${REQUIRED_ROLE_ID}
+      - VOTES_REQUIRED=${VOTES_REQUIRED:-2}
+      - VOTE_TIMEOUT=${VOTE_TIMEOUT:-120}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /path/to/your/docker-compose.yml:/app/target-compose.yml:ro
+    networks:
+      - jump-start-network
+
+networks:
+  jump-start-network:
+    driver: bridge
