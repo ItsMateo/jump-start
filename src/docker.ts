@@ -27,6 +27,10 @@ export class DockerManager {
 			});
 
 			process.on("close", (code) => {
+				console.log("Container started with code:", code);
+				console.log("stdout:", stdout);
+				console.log("stderr:", stderr);
+
 				const success = code === 0;
 				const truncatedError = success
 					? undefined
@@ -41,6 +45,8 @@ export class DockerManager {
 			});
 
 			process.on("error", (error) => {
+				console.error("Error starting container:", error);
+
 				resolve({
 					success: false,
 					output: "",
@@ -70,6 +76,10 @@ export class DockerManager {
 			});
 
 			process.on("close", (code) => {
+				console.log("Container status checked with code:", code);
+				console.log("stdout:", stdout);
+				console.log("stderr:", stderr);
+
 				const success = code === 0;
 				let running = false;
 
@@ -101,6 +111,8 @@ export class DockerManager {
 			});
 
 			process.on("error", (error) => {
+				console.error("Error getting container status:", error);
+
 				resolve({
 					success: false,
 					output: "",
