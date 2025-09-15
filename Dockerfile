@@ -16,6 +16,9 @@ RUN bun install --frozen-lockfile
 # Copy source code
 COPY . .
 
+# Make scripts executable
+RUN chmod +x scripts/*.sh
+
 # Build the TypeScript code
 RUN bun run build
 

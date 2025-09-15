@@ -9,9 +9,9 @@ export interface DockerResult {
 export class DockerManager {
 	async startContainer(): Promise<DockerResult> {
 		return new Promise((resolve) => {
-			const args = ["-f", "/app/target-compose.yml", "up", "-d"];
+			console.log("Starting containers using bash script...");
 
-			const process = spawn("docker-compose", args, {
+			const process = spawn("/bin/bash", ["/app/scripts/start-containers.sh"], {
 				stdio: ["ignore", "pipe", "pipe"],
 			});
 
