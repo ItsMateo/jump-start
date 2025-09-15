@@ -4,8 +4,8 @@ FROM oven/bun:1.1-alpine
 # Set working directory
 WORKDIR /app
 
-# Install docker CLI and compose plugin (needed to execute docker compose commands on host)
-RUN apk add --no-cache docker-cli docker-cli-compose
+# Install docker CLI and docker-compose (needed to execute docker-compose commands on host)
+RUN apk add --no-cache docker-cli docker-compose
 
 # Copy package files
 COPY package.json bun.lockb* ./

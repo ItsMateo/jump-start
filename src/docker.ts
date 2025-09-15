@@ -9,9 +9,9 @@ export interface DockerResult {
 export class DockerManager {
 	async startContainer(): Promise<DockerResult> {
 		return new Promise((resolve) => {
-			const args = ["compose", "-f", "/app/target-compose.yml", "up", "-d"];
+			const args = ["-f", "/app/target-compose.yml", "up", "-d"];
 
-			const process = spawn("docker", args, {
+			const process = spawn("docker-compose", args, {
 				stdio: ["ignore", "pipe", "pipe"],
 			});
 
@@ -52,9 +52,9 @@ export class DockerManager {
 
 	async getContainerStatus(): Promise<DockerResult & { running: boolean }> {
 		return new Promise((resolve) => {
-			const args = ["compose", "-f", "/app/target-compose.yml", "ps", "--format", "json"];
+			const args = ["-f", "/app/target-compose.yml", "ps", "--format", "json"];
 
-			const process = spawn("docker", args, {
+			const process = spawn("docker-compose", args, {
 				stdio: ["ignore", "pipe", "pipe"],
 			});
 
